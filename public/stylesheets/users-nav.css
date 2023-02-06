@@ -1,0 +1,32 @@
+
+:root{
+    --pink:#de4e91;
+    --navbar-brand-text:'Roboto Condensed', sans-serif;
+
+}
+
+
+
+#user-nav-section .bg-primary{
+    background-color: var(--pink) !important;
+
+}
+
+#user-nav-section .navbar{
+            box-shadow: 0 3px 9px 3px rgba(0,0,0,0.1);
+}
+
+#user-nav-section .navbar-brand img{
+    width:30px;
+}
+
+#user-nav-section .navbar-brand{
+    letter-spacing:2px;
+    font-family:var(--navbar-brand-text);
+    
+}
+
+#user-nav-section .navbar-nav .nav-item{
+    margin-right: 10px;
+}
+

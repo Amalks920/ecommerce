@@ -1,0 +1,21 @@
+#user-main-section #header{
+    background: url('/images/banner-img-1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size:100%;
+
+}
+
+#user-main-section .btn:not(.nav-btns button){
+    background-color: ghostwhite;
+    color: rgb(85,85,85);
+    padding:10px 28px;
+    border-radius: 25px;
+    border: 1px solid rgb(85,85,85);
+}
+
+#user-main-section .btn:not(.nav-btns button):hover{
+    background-color: var(--pink);
+    color: ghostwhite;
+    border-color:var(--pink);
+}
