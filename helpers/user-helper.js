@@ -29,8 +29,17 @@ module.exports={
         })
     },
     userLogIn:(user)=>{
-            userSchema.findOne({username:user.username},(err,result)=>{
-                bcrypt.compare(user.password,userdb.password)
+             return new Promise(async (resolve,reject)=>{
+              const userDb=  await userSchema.findOne({username:user.username})
+              if(userDb.username===user.username){
+                const verifyPassword=await bcrypt.compare(user.password,userDb.password)
+                if(verifyPassword){
+                    resolve(true)
+                }else{
+                    resolve(false)
+                }
+              }
+              
             })
     }
 }

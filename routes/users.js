@@ -3,6 +3,9 @@ var router = express.Router();
 const userHelper=require('../helpers/user-helper')
 const bcrypt=require('bcrypt');
 
+//verify login middleware.we can use it in every route where login verification required
+
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -28,10 +31,17 @@ router.post('/user-signup', async(req,res)=>{
 })
 
 router.post('/user-login', async(req,res)=>{
-      await userHelper.userLogIn(req.body)
-        if(req.session.LoggedIn){
-          
+       userHelper.userLogIn(req.body).then((result)=>{
+        if(result){
+          req.session.loggedIn=true;
+          res.redirect('/')
+        }else{
+          req.session.loggedIn=false;
+          res.redirect('/')
         }
+          
+       })
+        
       
 })
 
