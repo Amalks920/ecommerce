@@ -2,7 +2,7 @@
     background: url('/images/banner-img-1.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-size:100%;
+    
 
 }
 
@@ -18,4 +18,136 @@
     background-color: var(--pink);
     color: ghostwhite;
     border-color:var(--pink);
+}
+
+#user-main-section .title h2::before{
+    position: absolute;
+    content:"";
+    width: 4px;
+    height: 50px;
+    background-color: rgb(227, 79, 104);
+    margin-right: 10px;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+#user-main-section .collection-img span{
+    top: 20px;
+    right: 20px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+}
+
+.special-img span{
+    top:20px;
+    right:20px;
+
+}
+
+.special-list .btn{
+    padding:8px 20px !important;
+}
+
+.special-img img{
+    transition:all 0.3s ease;
+
+}
+
+.special-img:hover img{
+    transform:scale(1.2);
+}
+
+#offers{
+    background:url('/images/offer_img.jpg') center/cover no-repeat;
+}
+
+#offers .row{
+    min-height: 60vh;
+}
+
+.offers-content span{
+    font-size:28px;
+}
+
+.offers-content .btn{
+    border-color:transparent!important;
+}
+
+#about{
+    background-color: rgba(179, 179, 179, 0.05);
+
+}
+
+#newsletter{
+    background-color:rgba(179, 179, 179, 0.05) ;
+}
+
+#newsletter p{
+    max-width: 600px;
+
+}
+
+#newsletter .input-group{
+    max-width: 500px;
+}
+
+#newsletter .form-control{
+    border-top-left-radius:25px;
+    border-bottom-left-radius:25px;
+}
+
+#newsletter .btn{
+    background-color: palevioletred;
+    color: white;
+    border-color: palevioletred;
+}
+
+#newsletter .btn:hover{
+    background-color: black;
+    border-color: black;
+}
+
+footer .brand{
+    letter-spacing: 2px;
+}
+
+
+@media(min-width:992px){
+    .nav-item{
+        border-bottom: none;
+    }
+}
+
+/*user-login modal box css*/
+
+#user-login-modal .modal .modal-header{
+    box-shadow: 0 3px 9px 3px rgba(0,0,0,0.1);
+}
+
+#user-login-modal .modal .modal-body{
+    background-color:ghostwhite;
+    
+}
+
+
+
+
+#user-login-modal .modal-header .btn:hover{
+    background-color: #de4e91;
+}
+
+#user-login-modal .modal-body button{
+    background-color: #de4e91;
+}
+
+#user-login-modal .forgot-password{
+    margin-left: 200px;
+    cursor: pointer;
+}
+
+#user-login-modal .forgot-password:hover{
+    color:#de4e91 !important;
 }

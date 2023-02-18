@@ -4,6 +4,30 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 let hbs=require('express-handlebars');
+const mongoose=require('mongoose');
+require('dotenv').config();
+const fs=require('fs');
+const handlebars=require('handlebars');
+const db=require('./config/connection');
+const session=require('express-session');
+/*
+const headerTemplate= fs.readFile('user-login','utf-8',(err,data)=>{
+if(err){
+  throw err
+}else{
+  handlebars.registerPartial('user-login',headerTemplate)
+}
+
+})
+
+*/
+
+db.once('open',()=>{
+  console.log('db connected successfully')
+})
+
+
+
 
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
@@ -25,6 +49,7 @@ app.engine('hbs', hbs.engine({
   }
 }));
 
+app.use(session({ secret: "Private", resave: true, saveUninitialized: true, cookie: { maxAge: 60000000 } }))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -1,23 +1,27 @@
-#admin-nav-section *{
-  box-sizing: border-box;
+:root{
+  
+  --header-font:'Roboto', sans-serif;
+
+}
+
+#admin-navbar{
+  background-color:#9561c9;
+}
+
+#admin-navbar .navbar{
+  font-family: var(--header-font);
   
 }
 
- #admin-nav-section .container{
-  width: 100vw;
-  height:100vw;
+#admin-navbar .navbar-nav .nav-link .active{
+  color: whitesmoke;
 }
-#admin-nav-section nav{
-  background-color: #222121;
-}
-
-#admin-nav-section .navbar a{
-  color: ghostwhite;
+#admin-navbar .navbar-nav li {
+  margin-left: 50px;
+  
+  
 }
 
-#admin-nav-section .navbar-nav .nav-item{
-  margin-right: 40px;
-}
 
 
 
