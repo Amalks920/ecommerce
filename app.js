@@ -7,9 +7,14 @@ let hbs=require('express-handlebars');
 const mongoose=require('mongoose');
 require('dotenv').config();
 const fs=require('fs');
+//const path=require('path');
 const handlebars=require('handlebars');
 const db=require('./config/connection');
 const session=require('express-session');
+const bodyParser=require('body-parser');
+const fileUpload=require('express-fileupload')
+
+
 /*
 const headerTemplate= fs.readFile('user-login','utf-8',(err,data)=>{
 if(err){
@@ -26,6 +31,8 @@ db.once('open',()=>{
   console.log('db connected successfully')
 })
 
+
+/*defining multer middleware*/
 
 
 
@@ -49,6 +56,10 @@ app.engine('hbs', hbs.engine({
   }
 }));
 
+
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
+app.use(fileUpload());
 app.use(session({ secret: "Private", resave: true, saveUninitialized: true, cookie: { maxAge: 60000000 } }))
 app.use(logger('dev'));
 app.use(express.json());
@@ -76,3 +87,5 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+

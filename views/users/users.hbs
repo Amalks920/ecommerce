@@ -53,6 +53,39 @@
                 </div>
 
                 <div class="collection-list mt-4 row">
+
+                    {{#if products}}
+
+                    {{#each products}}
+                    <div class="col-md-6 col-lg-4 col-xl-3 best border border-1 p-4">
+                        
+                        <div class="collection-img position-relative">
+                            <img src="/product-images/{{this._id}}.jpg" alt="gray-shirt" class="w-100 images">
+                            <span class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
+
+                        </div>
+                        <div class="text-center">
+                            <div class="rating mt-3">
+                                <span class=""><i class="fa-solid fa-star"></i></span>
+                                <span class=""><i class="fa-solid fa-star"></i></span>
+                                <span class=""><i class="fa-solid fa-star"></i></span>
+                                <span class=""><i class="fa-solid fa-star"></i></span>
+                                <span class=""><i class="fa-solid fa-star"></i></span>
+                                <span class=""><i class="fa-solid fa-star"></i></span>
+                            </div>
+                            <p class="">{{this.productName}}</p>
+                            <span class="">$ {{this.productPrice}}</span>
+
+                        </div>
+                        <div class="d-grid justify-content-center">
+                             <button href="/add-to-cart" class="btn btn-danger">ADD TO CART</button>
+                             </div>
+
+                    </div>
+                    {{/each}}
+
+                    {{else}}
+
                     <div class="col-md-6 col-lg-4 col-xl-3 best">
                         
                         <div class="collection-img position-relative">
@@ -69,55 +102,17 @@
                                 <span class=""><i class="fa-solid fa-star"></i></span>
                                 <span class=""><i class="fa-solid fa-star"></i></span>
                             </div>
-                            <p class="">gray shirt</p>
-                            <span class="">$ 45.50</span>
+                            <p class="">{{products.productName}}</p>
+                            <span class="">$ {{products.productPrice}}</span>
                         </div>
 
                     </div>
 
-                      <div class="col-md-6 col-lg-4 col-xl-3 feat">
-                        
-                        <div class="collection-img position-relative">
-                            <img src="/images/c_formal_gray_shirt.png" alt="gray-shirt" class="w-100">
-                            <span class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
+                    {{/if}}
 
-                        </div>
-                        <div class="text-center">
-                            <div class="rating mt-3">
-                                <span class=""><i class="fa-solid fa-star"></i></span>
-                                <span class=""><i class="fa-solid fa-star"></i></span>
-                                <span class=""><i class="fa-solid fa-star"></i></span>
-                                <span class=""><i class="fa-solid fa-star"></i></span>
-                                <span class=""><i class="fa-solid fa-star"></i></span>
-                                <span class=""><i class="fa-solid fa-star"></i></span>
-                            </div>
-                            <p class="">gray shirt</p>
-                            <span class="">$ 45.50</span>
-                        </div>
+                      
 
-                    </div>
-
-                      <div class="col-md-6 col-lg-4 col-xl-3 new">
-                        
-                        <div class="collection-img position-relative">
-                            <img src="/images/c_formal_gray_shirt.png" alt="gray-shirt" class="w-100">
-                            <span class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
-
-                        </div>
-                        <div class="text-center">
-                            <div class="rating mt-3">
-                                <span class=""><i class="fa-solid fa-star"></i></span>
-                                <span class=""><i class="fa-solid fa-star"></i></span>
-                                <span class=""><i class="fa-solid fa-star"></i></span>
-                                <span class=""><i class="fa-solid fa-star"></i></span>
-                                <span class=""><i class="fa-solid fa-star"></i></span>
-                                <span class=""><i class="fa-solid fa-star"></i></span>
-                            </div>
-                            <p class="">gray shirt</p>
-                            <span class="">$ 45.50</span>
-                        </div>
-
-                    </div>
+                      
 
 
                 </div>

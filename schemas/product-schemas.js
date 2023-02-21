@@ -6,27 +6,31 @@ const productSchema=new Schema({
     productName:{
         type:String,
         require:true,
-        unique:true
+        
     },
-    productDetails:{
+    productDescription:{
         type:String,
         require:true,
-        unique:true
     },
+   
     productCategory:{
         type:String,
         require:true,
-        unique:true
+        
     },
     productPrice:{
         type:Number,
         require:true,
-        unique:true
+       
     },
     stockQuantity:{
         type:Number,
         require:true,
-        unique:true
+       
+    },
+    productImage:{
+        data:Buffer,
+        contentType:String,
     }
 })
 

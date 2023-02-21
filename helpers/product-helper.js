@@ -6,22 +6,32 @@ const productSchema=require('../schemas/product-schemas')
 module.exports={
     addProduct:(product)=>{
             return new Promise(async (resolve,reject)=>{
-                const { product_name: productName, description: productDetails, category: productCategory, price: productPrice, stock: stockQuantity } = product;
+                const { product_name: productName,description:productDescription, category: productCategory, price: productPrice, stock: stockQuantity,image:productImage } = product;
 
 const newProduct=new productSchema( {
   productName,
-  productDetails,
+  productDescription,
   productCategory,
   productPrice,
-  stockQuantity
+  stockQuantity,
+  productImage
 });
 
-await productSchema.create(newProduct)
-console.log(newProduct)
 
-resolve();
+await productSchema.create(newProduct)
+console.log(newProduct._id)
+
+resolve(newProduct._id);
 
 
             })
+    },
+
+    getProduct:()=>{
+      return new Promise((resolve,reject)=>{
+       const products= productSchema.find()
+        //console.log(products)
+       resolve(products)
+      })
     }
 }

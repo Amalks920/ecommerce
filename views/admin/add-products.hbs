@@ -10,7 +10,7 @@
           </div>
 
           <div class="card-body">
-            <form action="/admin/add-products" method="post">
+            <form action="/admin/add-products" method="post" enctype="multipart/form-data">
             <div class="form-floating mb-3">
               <input type="text" class="form-control form-control-sm" name="product_name" id="product_name" autofocus>
               <label for="user_name">Product Name</label>
@@ -29,8 +29,13 @@
               <label for="user_name">Stock</label>
             </div>
             <div class="  form-floating mb-3">
-              <input type="file" name="image" class="form-control form-control-sm" id="Image"  autofocus>
+              <input type="file" name="image" class="form-control form-control-sm" id="Image" autofocus>
               
+            </div>
+
+             <div class=" col form-floating mb-3">
+              <textarea type="text" name="description" class="form-control form-control-sm" id="description" minlength="10" maxlength="150" autocorrect="on" spellcheck="true" autofocus required></textarea>
+              <label for="description">Description</label>
             </div>
             <div class="d-grid btn-sm">
             <button type="submit" class="btn btn-success">Add Products</button>
