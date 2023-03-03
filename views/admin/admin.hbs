@@ -5,7 +5,7 @@
       <thead>
         <tr class="text-center">
           <th>Product Image</th>
-          <th>Product Name</th>
+          <th>product</th>
           <th>Description</th>
           <th>Category</th>
           <th>Price</th>
@@ -14,13 +14,15 @@
         </thead>
 
         <tbody>
+          {{#each products}}
         <tr class="text-center">
-          <td><img src="/images/best_selling_2.jpg" alt="best selling 2" class="w-25 h-10"></td>
-          <td>Shirt</td>
-          <td>it's a good shirt</td>
-          <td>shirt</td>
-          <td>500</td>
+          <td><img src="/images/{{this._id}}.png" alt="best selling 2" class="w-25 h-10"></td>
+          <td>{{this.productName}}</td>
+          <td>{{this.productDescription}}</td>
+          <td>{{this.productCategory}}</td>
+          <td>{{this.productPrice}}</td>
         </tr>
+        {{/each}}
      </tbody>
     </table>
   </div>

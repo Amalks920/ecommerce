@@ -1,6 +1,10 @@
 
 const collection=require('../config/collection')
 const productSchema=require('../schemas/product-schemas')
+const userCartSchema=require('../schemas/cart-schema')
+const { db } = require('../schemas/user-schema')
+
+
 
 
 module.exports={
@@ -33,5 +37,6 @@ resolve(newProduct._id);
         //console.log(products)
        resolve(products)
       })
-    }
+    },
+   
 }

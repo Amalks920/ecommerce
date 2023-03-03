@@ -7,8 +7,10 @@ const path=require('path')
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.render('admin/admin',{admin:true});
+router.get('/', async function(req, res, next) {
+const products= await  productHelper.getProduct()
+  console.log(products)
+  res.render('admin/admin',{admin:true,products});
 });
 
 router.get('/add-products',(req,res)=>{
@@ -18,7 +20,7 @@ router.get('/add-products',(req,res)=>{
 
 
 router.post('/add-products',(req,res)=>{
-  console.log(req.body)
+  //console.log(req.body)
 
   console.log('hello it the image')
   //console.log(req.files.image)

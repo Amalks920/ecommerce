@@ -6,16 +6,19 @@ const productSchema=new Schema({
     productName:{
         type:String,
         require:true,
+        lowercase:true,
         
     },
     productDescription:{
         type:String,
         require:true,
+        lowercase:true,
     },
    
     productCategory:{
         type:String,
         require:true,
+        lowercase:true,
         
     },
     productPrice:{
@@ -34,6 +37,6 @@ const productSchema=new Schema({
     }
 })
 
-const product=mongoose.model('product',productSchema)
+const product=mongoose.model('Product',productSchema)
 
 module.exports=product;

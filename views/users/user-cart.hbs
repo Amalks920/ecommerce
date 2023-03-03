@@ -1,102 +1,30 @@
-<section id="user-cart">
-    <div class="container d-flex justify-content-center">
-       <div class="col-md-10">
+<section id="user-cart" class="mt-5 d-flex align-items-center justify-content-center">
+<div class="container cart-container align-items-center justify-content-center rounded p-4">
 
-       
-   <table class="table table-sm small align-middle mt-5">
-    <thead>
-    <tr class="text-center">
-        <th scope="col">NO</th>
-        <th scope="col">IMAGE</th>
-        <th scope="col">PRODUCT</th>
-        <th scope="col">QTY</th>
-        <th scope="col">PRICE</th>
-        <th scope="col">TOTAL</th>
-    </tr>
-    </thead>
-    <tbody>
-        <tr class="text-center">
-            <td scope="row">1</td>
-            
-                <td>
-                    <img src="/images/best_selling_1.jpg" alt="cart-image" class="w-25 h-25">
-                </td>
-                   
-                <td>
-                     <h6>shirt</h6>
-                    <span class="small">best selling shirt</span>
-                    <span class="small">400 rs</span>
-                </td>
+  {{#each cart}}
+    <div class="row border-top">
+  
+       <div class="col-3 p-2 text-center">
+          <img src="product-images/{{this.item.0._id}}.jpg" alt="boxy shirt" width="50px">
+        </div>
 
-                <td>
-                   <button class="btn btn-transparent">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-</svg>
-                   </button>
+        <div class="col-4 p-2 text-center d-grid justify-content-center align-items-center">
+          <h4 class="productname">{{this.item.0.productName}}</h4>
+          
+        </div>
+  
+        <div class="col-3 p-1 quantity d-flex justify-content-center align-items-center">
+          <button class="btn btn-sm me-3">-</button>
+          <span>3</span>
+          <button class="btn btn-sm ms-3">+</button>
+        </div>
 
-                   <span>1</span>
-
-                   <button class="btn btn-transparent">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-</svg>
-                   </button>
-                </td>
-            
-        <td>
-            <span class="small">400 rs</span>
-        </td>
-
-        <td>
-            <span>50000 rs</span>
-        </td>
-        
-        </tr>
-
-        <!--second row-->
-
-        <tr class="text-center">
-            <td scope="row">1</td>
-            
-                <td>
-                    <img src="/images/best_selling_1.jpg" alt="cart-image" class="w-25 h-25">
-                </td>
-                   
-                <td>
-                     <h6>shirt</h6>
-                    <span class="small">best selling shirt</span>
-                    <span class="small">400 rs</span>
-                </td>
-
-                <td>
-                   <button class="btn btn-transparent">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-</svg>
-                   </button>
-
-                   <span>1</span>
-
-                   <button class="btn btn-transparent">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-</svg>
-                   </button>
-                </td>
-            
-        <td>
-            <span class="small">400 rs</span>
-        </td>
-
-        <td>
-            <span>50000 rs</span>
-        </td>
-        
-        </tr>
-    </tbody>
-   </table>
-
-   </div>
+        <div class="col-2 p-2 mt-3 d-flex align-items-center">
+         <p><strong>{{this.item.0.productPrice}}</strong></p>
+         
+        </div>
     </div>
+    {{/each}}
+
+</div>
 </section>

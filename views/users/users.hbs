@@ -78,7 +78,7 @@
 
                         </div>
                         <div class="d-grid justify-content-center">
-                             <button href="/add-to-cart" class="btn btn-danger">ADD TO CART</button>
+                             <a href="/add-to-cart/{{this._id}}" class="btn btn-danger">ADD TO CART</a>
                              </div>
 
                     </div>
@@ -86,7 +86,7 @@
 
                     {{else}}
 
-                    <div class="col-md-6 col-lg-4 col-xl-3 best">
+                    <div class="col-md-6 col-lg-4 col-xl-3 best mb-5">
                         
                         <div class="collection-img position-relative">
                             <img src="/images/c_formal_gray_shirt.png" alt="gray-shirt" class="w-100">
@@ -120,7 +120,7 @@
         </div>
     </section>
 
-    <section id="special" class="py-5">
+    <section id="special" class="py-5 mt-5">
         <div class="container">
             <div class="title text-center py-5">
                 <h2 class="position-relative d-inline-block">Special Selection</h2>
@@ -308,7 +308,28 @@
 
 
 
+{{#if loggedIn}}
+<div class="modal modal-md fade" id="user-login"
+style="backdrop-filter:blur(5px)"
+ tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p class="fw-bold">Do you want to really "LOGOUT?"</p>
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="/logout" type="button" class="btn btn-danger">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
 
+{{else}}
 <!--user login Modal start here-->
 <section class="mt-5" id="user-login-modal">
 <div class="modal modal-md fade"
@@ -410,6 +431,11 @@
   
 </section>
 <!--user login Modal end's here-->
+
+<!--user cart section -->
+
+
+{{/if}}
 
 
 <script>
