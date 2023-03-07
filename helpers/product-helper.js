@@ -1,10 +1,10 @@
 
 const collection=require('../config/collection')
-const productSchema=require('../schemas/product-schemas')
+let productSchema=require('../schemas/product-schemas')
 const userCartSchema=require('../schemas/cart-schema')
 const { db } = require('../schemas/user-schema')
 
-
+productSchema=productSchema;
 
 
 module.exports={
@@ -33,8 +33,9 @@ resolve(newProduct._id);
 
     getProduct:()=>{
       return new Promise((resolve,reject)=>{
-       const products= productSchema.find()
+       const products= productSchema.find({})
         //console.log(products)
+        console.log('axios worked')
        resolve(products)
       })
     },

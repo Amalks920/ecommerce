@@ -1,4 +1,9 @@
 const mongoose=require('mongoose');
+const productSchema=require('./product-schemas')
+
+
+console.log('product schemas=======')
+console.log(productSchema)
 
 const Schema=mongoose.Schema;
 
@@ -11,11 +16,10 @@ const userCartSchema=new Schema({
     },
     product:{
         type:Array,
-        ref:'Product',
-        require:true,
-       
+        ref:'productSchema',
     }
 })
+
 
 const userCart=mongoose.model('Cart',userCartSchema)
 

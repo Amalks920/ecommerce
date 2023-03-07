@@ -5,6 +5,7 @@ productSchema=require('../schemas/product-schemas')
 userCartSchema=require('../schemas/cart-schema')
 const bcrypt=require('bcrypt');
 const connection=require('../config/connection')
+const mongoose=require('mongoose');
 //const product = require('../schemas/product-schemas');
 
 console.log(productSchema)
@@ -65,8 +66,11 @@ module.exports={
 
     /*add to cart */
     addToCart:(prodId,userId)=>{
+     const prodIdObj=mongoose.Types.ObjectId(prodId)
+     console.log('prodIdObj')
+      console.log(prodIdObj)
       let proObj={
-        item:prodId,
+        item:prodIdObj,
         quantity:1
       }
 
@@ -105,6 +109,7 @@ module.exports={
             let userCart={
               cartUser:userId,
               cartProduct:[{item:prodId,quantity:1}]
+              
             }
 
            
@@ -126,14 +131,40 @@ module.exports={
     displayCart:(userId)=>{
 
       return new Promise(async (resolve,reject)=>{
-        const cartProducts=await userCartSchema.find({user:(userId)}). 
-        populate('product.item').
+        const cartProducts=await userCartSchema.find({})
+        console.log('cart')
+        console.log(cartProducts)
         
-        exec((err,product)=>{
-           console.log('this is products inside cart')
-           console.log(product)
-           resolve(product)
-        })
+
+
+       /*  .aggregate([
+          
+
+           {
+              '$unwind': {
+                'path': '$product', 
+                'includeArrayIndex': 'string', 
+                'preserveNullAndEmptyArrays': false
+              }
+            }, {
+              '$project': {
+                'quantity': '$product.quantity', 
+                'product': '$product'
+              }
+            }, {
+              '$group': {
+                '_id': '$_id', 
+                'product': {
+                  '$push': {
+                    'product': '$product'
+                  }
+                }
+              }
+            },
+           
+          
+        ])    */
+        resolve(cartProducts)
       })
       
       

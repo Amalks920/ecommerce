@@ -33,11 +33,10 @@ router.get('/cart',async (req,res)=>{
  const cartProducts= await userHelper.displayCart(req.session.user._id)
  console.log("cart_product-------------.....>>>>")
  
- console.log(cartProducts[0].product[0])
- const cart=cartProducts[0].product;
- console.log(cart)
+ console.log(cartProducts[0].product)
+
  //console.log(cartProducts.prodId[0]._id)
-  res.render('users/user-cart',{user:true,cart})
+  res.render('users/user-cart',{user:true,cartProducts})
 })
 
 router.get('/add-to-cart/:id',async (req,res)=>{
@@ -96,6 +95,13 @@ router.post('/user-login', async(req,res)=>{
 router.get('/logout',(req,res)=>{
   req.session.destroy()
   res.redirect('/')
+})
+
+
+
+
+router.post('/logout',(req,res)=>{
+  console.log(req.body)
 })
 
 
