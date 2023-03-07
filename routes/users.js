@@ -30,12 +30,13 @@ router.get('/', async function(req, res, next) {
 
 /*cart related routes*/
 router.get('/cart',async (req,res)=>{
- const cartProducts= await userHelper.displayCart(req.session.user._id)
+ let cartProducts= await userHelper.displayCart(req.session.user._id)
  console.log("cart_product-------------.....>>>>")
  
- console.log(cartProducts[0].product)
+ //console.log(cartProducts[0].product[0].product)
 
- //console.log(cartProducts.prodId[0]._id)
+ cartProducts=cartProducts[0].product;
+ console.log(cartProducts)
   res.render('users/user-cart',{user:true,cartProducts})
 })
 

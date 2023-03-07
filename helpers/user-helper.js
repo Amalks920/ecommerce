@@ -86,14 +86,14 @@ module.exports={
             console.log('hello i am here')
 
             //check if the product is already existing or not
-            const proExist=await userCartSchema.findOne({product:{$elemMatch:{'item':prodId}}})
+            const proExist=await userCartSchema.findOne({product:{$elemMatch:{'item':prodIdObj}}})
             console.log(proExist)
             console.log('product checked')
 
 
             //if proExist we have to increment the quantity
             if(proExist){
-                  await userCartSchema.updateOne({"user":userId,"product.item":prodId},{$inc:{"product.$.quantity":1}})
+                  await userCartSchema.updateOne({"user":userId,"product.item":prodIdObj},{$inc:{"product.$.quantity":1}})
                   console.log('proExist',proExist)
                   resolve()
                  
@@ -108,7 +108,7 @@ module.exports={
           }else{
             let userCart={
               cartUser:userId,
-              cartProduct:[{item:prodId,quantity:1}]
+              cartProduct:[{item:prodIdObj,quantity:1}]
               
             }
 
@@ -128,19 +128,55 @@ module.exports={
           
         })
     },
+
+
     displayCart:(userId)=>{
+      console.log('userId')
+      console.log(mongoose.Types.ObjectId(userId))
 
       return new Promise(async (resolve,reject)=>{
-        const cartProducts=await userCartSchema.find({})
-        console.log('cart')
-        console.log(cartProducts)
-        
-
-
-       /*  .aggregate([
+        const cartProducts=await userCartSchema.aggregate([
           
+            {
+              '$match':{
+                'user':mongoose.Types.ObjectId(userId)
+            }
+            },{
+              '$unwind':{
+                'path':'$product',
+                'includeArrayIndex':'string',
+                'preserveNullAndEmptyArrays':false
+              }
+            },{
+              '$lookup':{
+                'from':'products',
+                'localField':'product.item',
+                'foreignField':'_id',
+                'as':'product.item'
+              }
+            },{
+              '$addFields':{
+                'product.item':{
+                  '$arrayElemAt':[
+                    '$product.item',
+                    0
+                  ]
+                }
+              }
+            },   {
+              '$group':{
+                '_id':'$_id',
+                'product':{
+                  '$push':{
+                     'quantity':'$product.quantity',
+                     'item':'$product.item'
+                  }
+                }
+              }
+            }   
 
-           {
+
+   /*        {
               '$unwind': {
                 'path': '$product', 
                 'includeArrayIndex': 'string', 
@@ -161,10 +197,13 @@ module.exports={
                 }
               }
             },
-           
+           */
           
-        ])    */
+        ])    
         resolve(cartProducts)
+        console.log('cart') 
+       // console.log(cartProducts[0].product[0].product.item)
+      console.log(cartProducts[0].product[0])
       })
       
       
